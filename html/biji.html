@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>myBlog</title>
+        
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+</head>
+<body>
+<div class="navbar navbar-line">
+    <div class="container">
+        <div class="logo">
+            
+                myBlog
+            
+        </div>
+        <input type="checkbox" id="idoc_nav" />
+        <div class="menu_tree">
+        <ul><li><a href="../index.html">index</a></li><li class="active"><a href="../html/biji.html">biji</a></li></ul>    
+        </div>
+        
+        
+
+        <section class="idoc_nav_btn">
+            <label for="idoc_nav"><span></span></label>
+        </section>
+    </div>
+    
+</div>
+
+
+
+
+<div class="container">
+
+    <div class="page-toc">
+        <ul><li><a href="#t0创建项目">创建项目</a><ul><li><a href="#t1初始化项目">初始化项目</a></li><li><a href="#t2安装bootstrap">安装bootstrap</a></li><li><a href="#t3建立静态文件服务器">建立静态文件服务器</a></li></ul></li></ul>
+    </div>
+    
+    <div class="content markdown-body">
+        <h1 id="t0&#x521B;&#x5EFA;&#x9879;&#x76EE;">&#x521B;&#x5EFA;&#x9879;&#x76EE; <a href="#t0&#x521B;&#x5EFA;&#x9879;&#x76EE;"> # </a></h1>
+<pre><code>    mkdir &#x6587;&#x4EF6;&#x5939;&#x540D;&#x5B57;
+</code></pre><h2 id="t1&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;">&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE; <a href="#t1&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;"> # </a></h2>
+<pre><code>npm init -y
+&#x5F97;&#x5230;package.json&#x6587;&#x4EF6;
+</code></pre><h2 id="t2&#x5B89;&#x88C5;bootstrap">&#x5B89;&#x88C5;bootstrap <a href="#t2&#x5B89;&#x88C5;bootstrap"> # </a></h2>
+<ol>
+<li>&#x5148;&#x521B;&#x5EFA; <code>.bowerrc</code> &#x6587;&#x4EF6;,&#x5E76;&#x6307;&#x5B9A;&#x7B2C;&#x4E09;&#x65B9;&#x524D;&#x7AEF;&#x5E93;&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;</li>
+</ol>
+<pre><code>$ touch .bowerrc
+
+{&quot;directory&quot;:&quot;./lib&quot;}
+
+$ bower init
+$ bower install bootstrap --save
+</code></pre><p>&#x5982;&#x679C;&#x62A5;git&#x6CA1;&#x6709;&#x5B89;&#x88C5;&#xFF0C;&#x9700;&#x8981;&#x628A;git&#x7684;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x6DFB;&#x52A0;&#x5230;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x4E2D;&#x53BB;,&#x7528;&#x5206;&#x53F7;&#x9694;&#x5F00;
+C:\Program Files\Git\bin</p>
+<h2 id="t3&#x5EFA;&#x7ACB;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x670D;&#x52A1;&#x5668;">&#x5EFA;&#x7ACB;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x670D;&#x52A1;&#x5668; <a href="#t3&#x5EFA;&#x7ACB;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x670D;&#x52A1;&#x5668;"> # </a></h2>
+<pre><code>$ npm install mime --save
+</code></pre>
+        <div class="copyright">Powered by <a href="https://github.com/jaywcjlove/idoc" target="_blank">idoc</a>. Dependence <a href="https://nodejs.org">Node.js</a> run.</div>
+    </div>
+
+</div>
+
+<style>
+    .page-toc{
+        overflow: hidden;
+        position:fixed;
+        left:50%;
+        margin-left:250px;
+	width:350px
+    }
+    .page-toc > ul li{
+        list-style-position: inside;
+	line-height:120%
+    }
+    .page-toc > ul{
+        transition: all 0.2s;
+        position: relative;
+    }
+    .page-toc > ul a {
+	color:#009a61;
+	font-size:110% ! important;
+	line-height:120%
+    }
+    .page-toc > ul .red{
+        background: #f3f3f3;
+        z-index: 1;
+        border-left: 3px solid #009a61;
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
+	color:#000
+    }
+
+    .markdown-body{
+	font-size: 120% ! important;
+        max-width:800px;
+    }
+    .container{
+       font-size: 110% ! important;
+    }
+    html,body,.container{
+      font-family: Helvetica Neue,Helvetica,Arial,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Microsoft Yahei,sans-serif ! important;
+    }
+    .markdown-body pre code{
+        font-size: 20px;
+        line-height: 24px;
+    }
+</style>
+<script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.js"></script>
+<script>
+
+var bar = $(window).height() - $('.navbar ').height() - $('.page-toc').position().top;
+var count =  bar/26/2;
+var barHeight = $('.page-toc').outerHeight();
+$('.page-toc li').eq(0).children('a').addClass('red');
+var arr = [];
+$("h2,h3").each(function () {
+    arr.push($(this).position().top);
+});
+if(!($(window).height()-50 > barHeight)){
+    var flagTop = true;
+}
+function dark(){
+    var top =  Math.abs($('.page-toc > ul').position().top);
+    var cur = $(document).scrollTop();
+    for(var i = arr.length; i >=0;i--){
+        if(arr[i]<=cur){
+            break;
+        }
+    }
+    if(i===-1){
+        i = 0;
+    }
+    $('.page-toc li a').removeClass('red');
+    $('.page-toc li').eq(i).children('a').addClass('red');
+    if(flagTop){
+      if(i> arr.length-count){
+          $(' .page-toc > ul').css('top',-(barHeight-bar));
+          return;
+      }
+      if(i>count){
+          $(' .page-toc > ul').css('top',-26*(i-count));
+      }else{
+          $(' .page-toc > ul').css('top',0);
+      }
+    }
+}
+$(window).on('scroll',dark);
+</script>
+</body>
+</html>
